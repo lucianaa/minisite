@@ -1,8 +1,9 @@
 
+import os
 from bottle import Bottle, request, template, debug,route, error, run
 import requests
 
-app = Bottle()
+#app = Bottle()
 @route('/hello/')
 @route('/hello/<name>')
 def hello(name='Stranger'):
@@ -53,5 +54,5 @@ def error404(error):
     return 'Página não encontrada.'
 
 #debug(True)  
-#run(host='localhost', port=8080, debug=True)
+run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
